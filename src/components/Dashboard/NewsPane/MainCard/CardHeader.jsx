@@ -1,7 +1,7 @@
 import React from "react";
 
-function CardHeader() {
-  return <h1>head</h1>;
+function CardHeader({ title }) {
+  return <h1>{title}</h1>;
 }
 
 export default CardHeader;

@@ -2,8 +2,11 @@ import React, { useEffect, useState } from "react";
 import { API } from "../../api/axios";
 import NewsPane from "./NewsPane";
 
+import { PageLoader } from "neetoui";
+
 function Dashboard() {
   const [news, setNews] = useState({});
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
     apiCall();
@@ -13,6 +16,7 @@ function Dashboard() {
     try {
       const response = await API.get("/news?category=science");
       setNews(response.data);
+      setLoading(false);
     } catch (error) {
       true;
     } finally {
@@ -20,10 +24,13 @@ function Dashboard() {
     }
   };
 
+  if (loading) {
+    return <PageLoader />;
+  }
+
   return (
     <div>
-      <NewsPane />
-      {news.category}
+      <NewsPane news={news} />
     </div>
   );
 }
