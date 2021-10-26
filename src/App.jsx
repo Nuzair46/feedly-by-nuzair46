@@ -1,7 +1,13 @@
 import React from "react";
 
+import TopBar from "./components/common/TopBar";
+
 function App() {
-  return <h1 className="text-center">Hello World</h1>;
+  return (
+    <div>
+      <TopBar />
+    </div>
+  );
 }
 
 export default App;
