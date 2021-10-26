@@ -8,5 +8,9 @@ module.exports = {
         ],
       },
     },
+    webpack: {
+      alias: {
+        "neetoui": "@bigbinary/neetoui/v2"
+      }
+    }
   }
-  

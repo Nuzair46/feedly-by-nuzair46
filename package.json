@@ -1,19 +1,37 @@
 {
+  "lint-staged": {
+    "src/**/*.{js,jsx,json}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ],
+    "{package.json,.eslintrc.js,.prettierrc.js}": [
+      "prettier --write",
+      "eslint --fix",
+      "git add"
+    ]
+  },
   "name": "feedly-by-nuzair46",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
+    "@babel/plugin-proposal-private-property-in-object": "^7.15.4",
+    "@babel/plugin-transform-runtime": "^7.15.8",
     "@bigbinary/neetoui": "^2.0.95",
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
     "@testing-library/react": "^11.1.0",
     "@testing-library/user-event": "^12.1.10",
     "autoprefixer": "^9",
+    "axios": "^0.24.0",
+    "babel-plugin-js-logger": "^1.0.17",
     "formik": "^2.2.9",
+    "js-logger": "^1.6.1",
     "postcss": "^7",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",
+    "react-router-dom": "^5.3.0",
     "react-router-nav-prompt": "^0.4.1",
     "react-scripts": "4.0.3",
     "react-toastify": "^8.0.3",
@@ -24,7 +42,8 @@
     "start": "craco start",
     "build": "craco build",
     "test": "craco test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "prepare": "husky install"
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +62,20 @@
       "last 1 firefox version",
       "last 1 safari version"
     ]
+  },
+  "devDependencies": {
+    "@babel/eslint-parser": "^7.15.8",
+    "eslint-config-prettier": "^8.3.0",
+    "eslint-plugin-cypress": "^2.12.1",
+    "eslint-plugin-import": "^2.25.2",
+    "eslint-plugin-jam3": "^0.2.3",
+    "eslint-plugin-json": "^3.1.0",
+    "eslint-plugin-prettier": "^4.0.0",
+    "eslint-plugin-promise": "^5.1.1",
+    "eslint-plugin-react": "^7.26.1",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "husky": "^7.0.0",
+    "lint-staged": "^11.2.4",
+    "prettier": "^2.4.1"
   }
 }

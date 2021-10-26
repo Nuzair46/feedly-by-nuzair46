@@ -1,0 +1,12 @@
+{
+  "[ruby]": {
+    "editor.autoClosingBrackets": "beforeWhitespace",
+    "editor.formatOnSave": true,
+    "editor.defaultFormatter": "misogi.ruby-rubocop"
+  },
+  "files.trimTrailingWhitespace": true,
+  "files.trimFinalNewlines": true,
+  "editor.formatOnSave": true,
+  "yaml.format.enable": true,
+  "ruby.rubocop.useBundler": true
+}
