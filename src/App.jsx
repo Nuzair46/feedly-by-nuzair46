@@ -1,6 +1,6 @@
 import React from "react";
 
-import TopBar from "./components/common/TopBar";
+import TopBar from "./components/Common/TopBar";
 import Dashboard from "./components/Dashboard";
 
 function App() {
