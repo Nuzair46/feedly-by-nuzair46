@@ -1,7 +1,7 @@
 import React from "react";
 
 import { Filter, Search, Notification } from "@bigbinary/neeto-icons";
-import { Button } from "neetoui";
+import { Button, Tooltip } from "neetoui";
 import { Header } from "neetoui/layouts";
 
 function TopBar() {
@@ -12,9 +12,13 @@ function TopBar() {
         actionBlock={
           <div className="space-x-3">
             <div className="inline-block align-middle">
-              <div className="flex space-x-2">
-                <Search size={24} />
-                <Notification size={24} />
+              <div className="flex">
+                <Tooltip placement={"bottom"} content={"Search"}>
+                  <Button icon={() => <Search />} style="text" />
+                </Tooltip>
+                <Tooltip placement={"bottom"} content={"Subscribe"}>
+                  <Button icon={() => <Notification />} style="text" />
+                </Tooltip>
               </div>
             </div>
             <Button label="Filter" icon={Filter} style="secondary" />
