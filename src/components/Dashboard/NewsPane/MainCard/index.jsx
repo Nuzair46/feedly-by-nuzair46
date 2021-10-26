@@ -11,14 +11,14 @@ function MainCard({ data }) {
       <div className="w-full mb-6">
         <img src={url} />
       </div>
-      <div className="m-4 space-y-4">
-        <CardHeader title={data[0].title} />
+      <div className="m-4 mt-0 space-y-4">
+        <CardHeader title={data.title} />
         <CardBody
-          body={data[0].content}
+          body={data.content}
           status={{
-            date: data[0].date,
-            time: data[0].time,
-            author: data[0].author,
+            date: data.date,
+            time: data.time,
+            author: data.author,
           }}
         />
         <CardFooter />

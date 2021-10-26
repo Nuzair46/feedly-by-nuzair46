@@ -1,7 +1,13 @@
 import React from "react";
 
-function CardHeader() {
-  return <h1>small Header</h1>;
+import { Typography } from "neetoui";
+
+function CardHeader({ title }) {
+  return (
+    <Typography style="h4" className="font-bold text-gray-700">
+      {title}
+    </Typography>
+  );
 }
 
 export default CardHeader;

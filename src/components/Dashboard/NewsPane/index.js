@@ -6,6 +6,8 @@ import SmallCard from "./SmallCard";
 import { Typography } from "neetoui";
 
 function NewsPane({ news }) {
+  const smallCardData = news.data;
+  smallCardData.shift();
   return (
     <div className="mx-40 mt-20">
       <Typography
@@ -15,12 +17,11 @@ function NewsPane({ news }) {
       >
         {news.category} News
       </Typography>
-      <MainCard data={news.data} />
-      <div className="flex flex-wrap">
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
-        <SmallCard />
+      <MainCard data={news.data[0]} />
+      <div className="flex">
+        {smallCardData.slice(1, 5).map((item, index) => {
+          return <SmallCard key={index} data={item} />;
+        })}
       </div>
     </div>
   );
