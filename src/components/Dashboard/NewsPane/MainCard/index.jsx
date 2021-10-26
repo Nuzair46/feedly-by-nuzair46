@@ -7,9 +7,11 @@ import CardHeader from "./CardHeader";
 function MainCard({ data }) {
   const url = imgURL + "526/263";
   return (
-    <div className="flex">
-      <img src={url} />
-      <div>
+    <div className="flex border-b border-gray-300 mb-2">
+      <div className="w-full mb-6">
+        <img src={url} />
+      </div>
+      <div className="m-4 space-y-4">
         <CardHeader title={data[0].title} />
         <CardBody
           body={data[0].content}

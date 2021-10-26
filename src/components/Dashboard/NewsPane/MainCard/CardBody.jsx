@@ -4,11 +4,13 @@ import { Typography } from "neetoui";
 
 function CardBody({ body, status }) {
   return (
-    <div>
-      <Typography className="text-red-800">
+    <div className="space-y-4">
+      <Typography className="text-gray-500 text-xs text-right mr-4">
         {status.author} at {status.time} on {status.date}
       </Typography>
-      <Typography>{body}</Typography>
+      <Typography className="text-xs text-gray-700 leading-4">
+        {body.substring(0, 300)}......
+      </Typography>
     </div>
   );
 }

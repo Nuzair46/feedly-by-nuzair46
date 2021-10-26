@@ -1,7 +1,9 @@
 import React from "react";
 
+import { Button } from "neetoui";
+
 function CardFooter() {
-  return <h1>footer</h1>;
+  return <Button className="leading-4" label="Read More" style="link" />;
 }
 
 export default CardFooter;
