@@ -18,13 +18,11 @@ module.exports = {
     "plugin:react/recommended",
     "prettier",
     "./.eslint-rules/globals",
-    "./.eslint-rules/imports/order",
     "./.eslint-rules/overrides",
     // ensure that you don't add custom rules
     // without taking permission from team leads.
     "./.eslint-rules/custom",
     // custom rules cannot override the following rules.
-    "./.eslint-rules/imports/enforced",
     "./.eslint-rules/react",
     "./.eslint-rules/promise",
   ],
