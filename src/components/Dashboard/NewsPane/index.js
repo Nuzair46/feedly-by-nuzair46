@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import MainCard from "./MainCard";
 import SmallCard from "./SmallCard";
@@ -6,8 +6,14 @@ import SmallCard from "./SmallCard";
 import { Typography } from "neetoui";
 
 function NewsPane({ news }) {
-  const smallCardData = news.data;
+  const [data, setData] = useState(news.data);
+  const smallCardData = data;
   smallCardData.shift();
+  const x = 1;
+  if (x == 2) {
+    setData();
+  }
+
   return (
     <div className="mx-40 mt-20">
       <Typography
