@@ -17,10 +17,10 @@ function NewsPane({ news }) {
       >
         {news.category} News
       </Typography>
-      <MainCard data={news.data[0]} />
-      <div className="flex">
+      <MainCard id={0} data={news.data[0]} />
+      <div className="flex flex-wrap">
         {smallCardData.slice(1, 5).map((item, index) => {
-          return <SmallCard key={index} data={item} />;
+          return <SmallCard key={index} id={index} data={item} />;
         })}
       </div>
     </div>

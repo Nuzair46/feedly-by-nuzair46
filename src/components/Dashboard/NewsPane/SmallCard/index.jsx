@@ -6,7 +6,7 @@ import CardHeader from "./CardHeader";
 
 function SmallCard({ data }) {
   return (
-    <div className="flex absolute">
+    <div className="flex">
       <div className="">
         <img className="" src={imgURL + "84/84"} />
       </div>
