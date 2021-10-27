@@ -1,7 +1,6 @@
 export const imgURL = "https://picsum.photos/";
 
 export const CATEGORY = [
-  "All",
   "National",
   "Business",
   "Sports",
