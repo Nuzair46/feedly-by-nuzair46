@@ -34,7 +34,11 @@ function App() {
   };
 
   if (loading) {
-    return <PageLoader />;
+    return (
+      <div className="h-screen">
+        <PageLoader />
+      </div>
+    );
   }
 
   return (
