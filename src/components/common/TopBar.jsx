@@ -5,15 +5,21 @@ import { Button, Tooltip, Typography } from "neetoui";
 import { Header } from "neetoui/layouts";
 import FilterPane from "./FilterPane";
 import Subscribe from "./Subscribe";
+import SearchBar from "./Search";
 
 function TopBar() {
   const [showPane, setShowPane] = useState(false);
   const [showSub, setShowSub] = useState(false);
+  const [showSearch, setShowSearch] = useState(false);
+
   const handleClick = () => {
     setShowPane(true);
   };
   const handleSub = () => {
     setShowSub(true);
+  };
+  const handleSearch = () => {
+    setShowSearch(true);
   };
   return (
     <div>
@@ -29,7 +35,11 @@ function TopBar() {
               <div className="inline-block align-middle">
                 <div className="flex">
                   <Tooltip placement={"bottom"} content={"Search"}>
-                    <Button icon={() => <Search />} style="text" />
+                    <Button
+                      icon={() => <Search />}
+                      style="text"
+                      onClick={handleSearch}
+                    />
                   </Tooltip>
                   <Tooltip placement={"bottom"} content={"Subscribe"}>
                     <Button
@@ -52,6 +62,7 @@ function TopBar() {
       </div>
       <FilterPane showPane={showPane} setShowPane={setShowPane} />
       <Subscribe showSub={showSub} setShowSub={setShowSub} />
+      <SearchBar showSearch={showSearch} setShowSearch={setShowSearch} />
     </div>
   );
 }
