@@ -1,12 +1,11 @@
 import React, { useState, useEffect } from "react";
-/*
+
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
 import TopBar from "./components/Common/TopBar";
 import Dashboard from "./components/Dashboard";
 import ArticlePane from "./components/Dashboard/ArticlePane";
 import ErrorBound from "./components/Common/ErrorBound";
-*/
 
 import { PageLoader } from "neetoui";
 import { API } from "./api/axios";
@@ -57,8 +56,6 @@ function App() {
     return <PageLoader />;
   }
 
-  return <div>{JSON.stringify(NEWS)}</div>;
-  /*
   return (
     <BrowserRouter>
       <TopBar />
@@ -84,7 +81,6 @@ function App() {
       </Switch>
     </BrowserRouter>
   );
-  */
 }
 
 export default App;
