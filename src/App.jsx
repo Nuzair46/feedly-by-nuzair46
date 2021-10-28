@@ -34,7 +34,11 @@ function App() {
   };
 
   if (loading) {
-    return <PageLoader />;
+    return (
+      <div className="h-screen">
+        <PageLoader />
+      </div>
+    );
   }
 
   return (
@@ -49,11 +53,12 @@ function App() {
         />
         <Route
           exact
-          path="/article/:slug"
+          path="/article/:category/:slug"
           render={props => (
             <ArticlePane
               state={props.location.state}
               slug={props.match.params.slug}
+              category={props.match.params.category}
               news={NEWS}
             />
           )}

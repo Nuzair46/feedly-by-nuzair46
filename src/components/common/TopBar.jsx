@@ -1,7 +1,7 @@
 import React, { useState } from "react";
 
 import { Filter, Search, Notification } from "@bigbinary/neeto-icons";
-import { Button, Tooltip, Typography } from "neetoui";
+import { Button, Tooltip } from "neetoui";
 import { Header } from "neetoui/layouts";
 import FilterPane from "./FilterPane";
 import Subscribe from "./Subscribe";
@@ -26,9 +26,12 @@ function TopBar() {
       <div className="border-b px-6">
         <Header
           title={
-            <Typography className="text-2xl font-semibold text-gray-500">
-              Feed.ly
-            </Typography>
+            <Button
+              className="text-2xl font-semibold text-gray-500"
+              onClick={() => (window.location.href = "/")}
+              label="Feed.ly"
+              style="text"
+            />
           }
           actionBlock={
             <div className="space-x-3">
