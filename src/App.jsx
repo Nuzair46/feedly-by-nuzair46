@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import NEWS_DATA from "./api/axios";
 import { PageLoader } from "neetoui";
 import TopBar from "./components/Common/TopBar";
 import Dashboard from "./components/Dashboard";
 import ArticlePane from "./components/Dashboard/ArticlePane";
+import { API } from "./api/axios";
 
 function App() {
-  const [news, setNews] = useState();
+  const [NEWS, setNews] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     apiCall();
@@ -17,7 +17,9 @@ function App() {
 
   const apiCall = async () => {
     try {
-      setNews(NEWS_DATA);
+      let response = await API.get(`/news?category=science`); //${item.toLowerCase()}`);
+      setNews(response.data);
+      localStorage.setItem("newsdata", JSON.stringify(response.data));
       setLoading(false);
     } catch (error) {
       true;
@@ -38,12 +40,12 @@ function App() {
         <Route
           exact
           path="/"
-          render={() => <Dashboard news={news} setNews={setNews} />}
+          render={() => <Dashboard news={NEWS} setNews={setNews} />}
         />
         <Route
           exact
-          path="/article/:slug"
-          render={props => <ArticlePane title={props.match.params.slug} />}
+          path="/article/"
+          render={props => <ArticlePane data={props.location.state.data} />}
         />
       </Switch>
     </BrowserRouter>
