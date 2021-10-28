@@ -17,6 +17,7 @@
   "dependencies": {
     "@babel/plugin-proposal-private-property-in-object": "^7.15.4",
     "@babel/plugin-transform-runtime": "^7.15.8",
+    "@bigbinary/neeto-icons": "^1.7.9",
     "@bigbinary/neetoui": "^2.0.95",
     "@craco/craco": "^6.4.0",
     "@testing-library/jest-dom": "^5.11.4",
@@ -30,6 +31,7 @@
     "formik": "^2.2.9",
     "js-logger": "^1.6.1",
     "postcss": "^7",
+    "prop-types": "^15.7.2",
     "react": "^17.0.2",
     "react-dom": "^17.0.2",
     "react-router": "^5.2.1",

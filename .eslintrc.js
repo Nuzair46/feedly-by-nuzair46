@@ -18,13 +18,11 @@ module.exports = {
     "plugin:react/recommended",
     "prettier",
     "./.eslint-rules/globals",
-    "./.eslint-rules/imports/order",
     "./.eslint-rules/overrides",
     // ensure that you don't add custom rules
     // without taking permission from team leads.
     "./.eslint-rules/custom",
     // custom rules cannot override the following rules.
-    "./.eslint-rules/imports/enforced",
     "./.eslint-rules/react",
     "./.eslint-rules/promise",
   ],
@@ -51,7 +49,7 @@ module.exports = {
     // not-auto-fixable: No undefined variables allowed.
     "no-undef": "error",
     // not-auto-fixable: Dont use console statements. Use logger which babel will remove during bundling.
-    "no-console": "error",
+    // "no-console": "error",
     // not-auto-fixable: require `return` statements to either always or never specify values.
     "consistent-return": "error",
     // auto-fixable: sadly this doesn't support guard clauses yet.
