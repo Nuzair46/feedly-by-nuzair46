@@ -5,8 +5,13 @@ import { Copy } from "@bigbinary/neeto-icons";
 import { imgURL, LOREM_IPSUM } from "../../Common/constants";
 import RelatedNews from "../NewsPane/RelatedNews";
 
-function ArticlePane({ state, slug, news }) {
-  console.log(state, slug);
+function ArticlePane({ state, news }) {
+  let newsHere;
+  news.map(item => {
+    if (item.category === state.category) {
+      newsHere = item;
+    }
+  });
   return (
     <div className="mx-40 my-4">
       <div className="space-y-8">
@@ -34,8 +39,8 @@ function ArticlePane({ state, slug, news }) {
           <Typography>{LOREM_IPSUM}</Typography>
           <Typography>{LOREM_IPSUM}</Typography>
         </div>
-        <div className="">
-          <RelatedNews news={news} />
+        <div>
+          <RelatedNews news={newsHere} category={state.category} />
         </div>
       </div>
     </div>

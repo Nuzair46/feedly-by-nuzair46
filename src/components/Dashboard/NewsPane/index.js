@@ -16,7 +16,7 @@ function NewsPane({ news }) {
         {news.category} News
       </Typography>
       <MainCard id={0} data={news.data[0]} category={news.category} />
-      <RelatedNews news={news} />
+      <RelatedNews news={news} category={news.category} />
     </div>
   );
 }
