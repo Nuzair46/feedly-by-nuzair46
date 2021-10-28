@@ -15,43 +15,24 @@ function App() {
   const [NEWS, setNews] = useState({});
   const [loading, setLoading] = useState(true);
   useEffect(() => {
-    //fetchNews();
     apiCall();
   }, []);
 
-  const apiCall = () => {
-    Promise.all(
-      CATEGORY.map(category =>
-        API.get(`/news?category=${category.toLowerCase()}`)
-      )
-    )
-      .then(responses => {
-        return Promise.all(responses.map(response => response.data));
-      })
-      .then(data => {
-        setNews(data);
-        setLoading(false);
-      })
-      .catch(error => {
-        console.log(error);
-      });
+  const apiCall = async () => {
+    try {
+      const response = await Promise.all(
+        CATEGORY.map(category =>
+          API.get(`/news?category=${category.toLowerCase()}`)
+        )
+      );
+      const data = await Promise.all(response.map(res => res.data));
+      setNews(data);
+      setLoading(false);
+    } catch (error) {
+      console.log(error);
+    }
   };
-  //async-await method. has problems
-  /*
-  const fetchNews = () => {
-    CATEGORY.map(async category => {
-      try {
-        let response = await API.get(`${category.toLowerCase()}`);
-        let resp = NEWS;
-        resp[category] = response.data;
-        setNews(resp);
-        console.log(NEWS);
-      } catch (error) {
-        console.log(error);
-      }
-    });
-  };
-  */
+
   if (loading) {
     return <PageLoader />;
   }
