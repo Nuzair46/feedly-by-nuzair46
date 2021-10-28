@@ -7,7 +7,7 @@ import CardHeader from "./CardHeader";
 function MainCard({ data, category }) {
   const url = imgURL + "650/300";
   return (
-    <div className="flex border-b w-full border-gray-300 mb-2">
+    <div className="flex border-b w-full border-gray-300 mb-6">
       <div className="w-1/2 mb-6">
         <img src={url} />
       </div>
