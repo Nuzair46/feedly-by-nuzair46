@@ -1,10 +1,11 @@
 import React from "react";
-import { imgURL } from "../../../Common/constants";
+import { imgURL } from "../../../../Common/constants";
+
 import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";
 import CardHeader from "./CardHeader";
 
-function SmallCard({ data }) {
+function SmallCard({ data, category }) {
   return (
     <div className="flex">
       <div className="">
@@ -15,7 +16,7 @@ function SmallCard({ data }) {
         <CardBody
           status={{ date: data.date, time: data.time, author: data.author }}
         />
-        <CardFooter />
+        <CardFooter data={data} category={category} />
       </div>
     </div>
   );

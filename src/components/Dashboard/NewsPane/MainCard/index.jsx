@@ -4,7 +4,7 @@ import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";
 import CardHeader from "./CardHeader";
 
-function MainCard({ data }) {
+function MainCard({ data, category }) {
   const url = imgURL + "650/300";
   return (
     <div className="flex border-b w-full border-gray-300 mb-2">
@@ -21,7 +21,7 @@ function MainCard({ data }) {
             author: data.author,
           }}
         />
-        <CardFooter data={data} />
+        <CardFooter data={data} category={category} />
       </div>
     </div>
   );

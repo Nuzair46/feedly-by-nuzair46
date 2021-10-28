@@ -44,8 +44,14 @@ function App() {
         />
         <Route
           exact
-          path="/article/"
-          render={props => <ArticlePane data={props.location.state.data} />}
+          path="/article/:slug"
+          render={props => (
+            <ArticlePane
+              state={props.location.state}
+              slug={props.match.params.slug}
+              news={NEWS}
+            />
+          )}
         />
       </Switch>
     </BrowserRouter>
