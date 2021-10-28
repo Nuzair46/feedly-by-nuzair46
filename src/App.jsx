@@ -9,12 +9,14 @@ import ErrorBound from "./components/Common/ErrorBound";
 
 import { PageLoader } from "neetoui";
 import { API } from "./api/axios";
-import { CATEGORY, FILTER } from "./components/Common/constants";
+import { CATEGORY } from "./components/Common/constants";
 
 function App() {
   const [NEWS, setNews] = useState({});
   const [loading, setLoading] = useState(true);
-  const [filter, setFilter] = useState(FILTER);
+  const [filter, setFilter] = useState(
+    JSON.parse(localStorage.getItem("filter"))
+  );
 
   useEffect(() => {
     apiCall();

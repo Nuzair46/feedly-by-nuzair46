@@ -8,6 +8,14 @@ import { Check } from "@bigbinary/neeto-icons";
 function FilterPane({ showPane, setShowPane, filter, setFilter }) {
   const [tempFilter, setTempFilter] = useState(filter);
 
+  const handleFilterOnArticle = () => {
+    if (window.location.pathname.includes("/article")) {
+      localStorage.setItem("filter", JSON.stringify(tempFilter));
+      console.log(filter);
+      window.location.href = "/";
+    }
+  };
+
   return (
     <div className="w-full">
       <Pane
@@ -60,6 +68,7 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
             onClick={() => {
               setShowPane(false);
               setFilter(tempFilter);
+              handleFilterOnArticle();
             }}
           />
           <Button
