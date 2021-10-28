@@ -7,6 +7,7 @@ import TopBar from "./components/Common/TopBar";
 import Dashboard from "./components/Dashboard";
 import ArticlePane from "./components/Dashboard/ArticlePane";
 import { API } from "./api/axios";
+import ErrorBound from "./components/Common/ErrorBound";
 
 function App() {
   const [NEWS, setNews] = useState({});
@@ -53,6 +54,7 @@ function App() {
             />
           )}
         />
+        <Route component={ErrorBound} />
       </Switch>
     </BrowserRouter>
   );
