@@ -23,7 +23,7 @@ function TopBar({ filter, setFilter }) {
   };
   return (
     <div>
-      <div className="border-b px-6">
+      <div className="border-b px-6 relative z-10">
         <Header
           title={
             <Button
