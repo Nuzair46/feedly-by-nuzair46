@@ -5,7 +5,7 @@ function RelatedNews({ news }) {
   let smallCardData = news.data;
   smallCardData.shift();
   return (
-    <div className="flex flex-wrap">
+    <div className="flex flex-wrap border-b pb-6">
       {smallCardData.slice(1, 5).map((item, index) => {
         return (
           <SmallCard

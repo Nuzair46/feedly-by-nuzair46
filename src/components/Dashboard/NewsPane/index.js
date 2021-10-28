@@ -7,7 +7,7 @@ import RelatedNews from "./RelatedNews";
 
 function NewsPane({ news }) {
   return (
-    <div className="mx-40 mt-20">
+    <div className="mx-40 mb-10">
       <Typography
         style="h2"
         textTransform="capitalize"
