@@ -22,4 +22,3 @@ function NewsPane({ news }) {
 }
 
 export default NewsPane;
-/**/
