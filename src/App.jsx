@@ -20,7 +20,7 @@ function App() {
 
   useEffect(() => {
     apiCall();
-  }, []);
+  }, [filter]);
 
   const apiCall = async () => {
     try {
@@ -54,7 +54,12 @@ function App() {
           exact
           path="/"
           render={() => (
-            <Dashboard news={NEWS} filter={filter} setNews={setNews} />
+            <Dashboard
+              news={NEWS}
+              filter={filter}
+              setFilter={setFilter}
+              setNews={setNews}
+            />
           )}
         />
         <Route

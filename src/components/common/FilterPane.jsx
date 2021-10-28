@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 
 import { Pane, Typography, Button, Checkbox } from "neetoui";
 import { CATEGORY, FILTER } from "./constants";
@@ -7,11 +7,13 @@ import { Check } from "@bigbinary/neeto-icons";
 
 function FilterPane({ showPane, setShowPane, filter, setFilter }) {
   const [tempFilter, setTempFilter] = useState(filter);
+  useEffect(() => {
+    setTempFilter(filter);
+  }, [filter]);
 
   const handleFilterOnArticle = () => {
     if (window.location.pathname.includes("/article")) {
       localStorage.setItem("filter", JSON.stringify(tempFilter));
-      console.log(filter);
       window.location.href = "/";
     }
   };

@@ -7,13 +7,13 @@ import { NeetoForm } from "@bigbinary/neeto-icons";
 import { Typography, Button } from "neetoui";
 import EmptyModal from "./EmptyModal";
 import RelatedNews from "./NewsPane/RelatedNews";
+import FilterBadges from "../Common/FilterBadges";
 
-function Dashboard({ news, filter }) {
+function Dashboard({ news, filter, setFilter }) {
   const [filteredNews, setFilteredNews] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
   let filtered = [];
-
   useEffect(() => {
     news.map(item => {
       if (filter[item.category]) {
@@ -56,6 +56,9 @@ function Dashboard({ news, filter }) {
 
   return (
     <div>
+      <div className="mx-40 my-5">
+        <FilterBadges filter={filter} setFilter={setFilter} />
+      </div>
       {filteredNews.map((item, index) => {
         return <NewsPane key={index} news={item} />;
       })}
