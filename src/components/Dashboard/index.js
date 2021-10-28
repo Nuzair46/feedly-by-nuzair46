@@ -1,21 +1,20 @@
 import React, { useEffect, useState } from "react";
-import { FILTER } from "../Common/constants";
+//import { FILTER } from "../Common/constants";
 
 import NewsPane from "./NewsPane";
 
-//National, World, Business, Sports.
-function Dashboard({ news }) {
-  //const [filter, setFilter] = useState(FILTER);
+function Dashboard({ news, filter }) {
   const [filteredNews, setFilteredNews] = useState([]);
   let filtered = [];
-  news.map(item => {
-    if (FILTER[item.category]) {
-      filtered.push(item);
-    }
-  });
+
   useEffect(() => {
+    news.map(item => {
+      if (filter[item.category]) {
+        filtered.push(item);
+      }
+    });
     setFilteredNews(filtered);
-  }, []);
+  }, [filter]);
 
   return (
     <div>

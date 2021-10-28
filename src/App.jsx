@@ -9,11 +9,13 @@ import ErrorBound from "./components/Common/ErrorBound";
 
 import { PageLoader } from "neetoui";
 import { API } from "./api/axios";
-import { CATEGORY } from "./components/Common/constants";
+import { CATEGORY, FILTER } from "./components/Common/constants";
 
 function App() {
   const [NEWS, setNews] = useState({});
   const [loading, setLoading] = useState(true);
+  const [filter, setFilter] = useState(FILTER);
+
   useEffect(() => {
     apiCall();
   }, []);
@@ -43,13 +45,15 @@ function App() {
 
   return (
     <BrowserRouter>
-      <TopBar />
+      <TopBar filter={filter} setFilter={setFilter} />
       <ToastContainer />
       <Switch>
         <Route
           exact
           path="/"
-          render={() => <Dashboard news={NEWS} setNews={setNews} />}
+          render={() => (
+            <Dashboard news={NEWS} filter={filter} setNews={setNews} />
+          )}
         />
         <Route
           exact

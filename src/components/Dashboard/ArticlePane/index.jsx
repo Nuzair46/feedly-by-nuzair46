@@ -6,7 +6,6 @@ import { imgURL, LOREM_IPSUM } from "../../Common/constants";
 import RelatedNews from "../NewsPane/RelatedNews";
 
 function ArticlePane({ state, news, category, slug }) {
-  console.log(state, category, slug);
   const inshortURL = `https://www.inshorts.com/en/news/${slug}`;
   let relatedNews;
   let mainNews;

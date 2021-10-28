@@ -1,20 +1,23 @@
 import React, { useState } from "react";
 
 import { Pane, Typography, Button, Checkbox } from "neetoui";
-import { CATEGORY } from "./constants";
+import { CATEGORY, FILTER } from "./constants";
 
 import { Check } from "@bigbinary/neeto-icons";
 
-function FilterPane({ showPane, setShowPane }) {
-  const [all, setAll] = useState(true);
-  const filterStates = {};
-  CATEGORY.map(item => {
-    filterStates[item] = false;
-  });
-  const [oneCheck, setOneCheck] = useState(filterStates);
+function FilterPane({ showPane, setShowPane, filter, setFilter }) {
+  const [tempFilter, setTempFilter] = useState(filter);
+
   return (
     <div className="w-full">
-      <Pane isOpen={showPane} onClose={() => setShowPane(false)}>
+      <Pane
+        isOpen={showPane}
+        onClose={() => {
+          setShowPane(false);
+          setFilter(FILTER);
+          setTempFilter(FILTER);
+        }}
+      >
         <Pane.Header>
           <Typography style="h2" weight="semibold">
             Filter Articles
@@ -24,30 +27,18 @@ function FilterPane({ showPane, setShowPane }) {
           <Typography className="font-semibold text-gray-700">
             Category
           </Typography>
-          <div>
-            <Checkbox
-              id="All"
-              label="All"
-              checked={all}
-              onClick={() => {
-                setAll(true);
-                setOneCheck(filterStates);
-              }}
-            />
-          </div>
           {CATEGORY.map((item, index) => {
             return (
               <div key={index}>
                 <Checkbox
                   id={item}
                   label={item}
-                  checked={oneCheck[item]}
+                  checked={tempFilter[item.toLowerCase()]}
                   onChange={() => {
-                    setAll(false);
-                    const newObj = oneCheck;
-                    newObj[item] = !oneCheck[item];
-                    console.log(oneCheck);
-                    setOneCheck(newObj);
+                    setTempFilter({
+                      ...tempFilter,
+                      [item.toLowerCase()]: !tempFilter[item.toLowerCase()],
+                    });
                   }}
                 />
               </div>
@@ -66,13 +57,20 @@ function FilterPane({ showPane, setShowPane }) {
             size="large"
             label="Save Changes"
             icon={Check}
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+              setFilter(tempFilter);
+            }}
           />
           <Button
             style="text"
             size="large"
             label="Cancel"
-            onClick={() => setShowPane(false)}
+            onClick={() => {
+              setShowPane(false);
+              setFilter(FILTER);
+              setTempFilter(FILTER);
+            }}
           />
         </Pane.Footer>
       </Pane>
