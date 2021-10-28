@@ -17,7 +17,9 @@ function ArticlePane({ state, slug, news }) {
               icon={() => <Copy color="#68737D" />}
               className="inline-block ml-1 align-middle"
               style="text"
-              onClick={() => navigator.clipboard.writeText(state.data.title)}
+              onClick={() =>
+                navigator.clipboard.writeText(state.data.readMoreUrl)
+              }
             />
           </span>
           <Typography className="text-gray-500 text-xs text-left font-normal mt-4">
