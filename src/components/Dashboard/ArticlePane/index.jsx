@@ -5,42 +5,54 @@ import { Copy } from "@bigbinary/neeto-icons";
 import { imgURL, LOREM_IPSUM } from "../../Common/constants";
 import RelatedNews from "../NewsPane/RelatedNews";
 
-function ArticlePane({ state, news }) {
-  let newsHere;
+function ArticlePane({ state, news, category, slug }) {
+  console.log(state, category, slug);
+  const inshortURL = `https://www.inshorts.com/en/news/${slug}`;
+  let relatedNews;
+  let mainNews;
   news.map(item => {
-    if (item.category === state.category) {
-      newsHere = item;
+    if (item.category === category) {
+      relatedNews = item;
     }
   });
+  relatedNews.data.map(item => {
+    if (item.url === inshortURL) {
+      mainNews = item;
+    }
+  });
+  if (!mainNews) {
+    mainNews = state.data;
+  }
+
   return (
     <div className="mx-40 my-4">
       <div className="space-y-8">
         <Typography style="h1" className="font-semibold text-black">
           <span>
-            {state.data.title}
+            {mainNews.title}
             <Button
               icon={() => <Copy color="#68737D" />}
               className="inline-block ml-1 align-middle"
               style="text"
               onClick={() =>
-                navigator.clipboard.writeText(state.data.readMoreUrl)
+                navigator.clipboard.writeText(mainNews.readMoreUrl)
               }
             />
           </span>
           <Typography className="text-gray-500 text-xs text-left font-normal mt-4">
-            {state.data.author} at {state.data.time} on {state.data.date}
+            {mainNews.author} at {mainNews.time} on {mainNews.date}
           </Typography>
         </Typography>
         <div className="my-8">
           <img className="block mx-auto w-1/2" src={imgURL + "600/300"} />
         </div>
         <div className="text-gray-800 text-sm space-y-8 border-b pb-8">
-          <Typography>{state.data.content}</Typography>
+          <Typography>{mainNews.content}</Typography>
           <Typography>{LOREM_IPSUM}</Typography>
           <Typography>{LOREM_IPSUM}</Typography>
         </div>
         <div>
-          <RelatedNews news={newsHere} category={state.category} />
+          <RelatedNews news={relatedNews} category={category} />
         </div>
       </div>
     </div>

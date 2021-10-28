@@ -8,7 +8,7 @@ function CardFooter({ data, category }) {
   return (
     <Link
       to={{
-        pathname: `/article/${slug}`,
+        pathname: `/article/${category}/${slug}`,
         state: {
           data: data,
           category: category,
