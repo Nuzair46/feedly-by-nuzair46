@@ -4,11 +4,16 @@ import { Filter, Search, Notification } from "@bigbinary/neeto-icons";
 import { Button, Tooltip, Typography } from "neetoui";
 import { Header } from "neetoui/layouts";
 import FilterPane from "./FilterPane";
+import Subscribe from "./Subscribe";
 
 function TopBar() {
   const [showPane, setShowPane] = useState(false);
+  const [showSub, setShowSub] = useState(false);
   const handleClick = () => {
     setShowPane(true);
+  };
+  const handleSub = () => {
+    setShowSub(true);
   };
   return (
     <div>
@@ -27,7 +32,11 @@ function TopBar() {
                     <Button icon={() => <Search />} style="text" />
                   </Tooltip>
                   <Tooltip placement={"bottom"} content={"Subscribe"}>
-                    <Button icon={() => <Notification />} style="text" />
+                    <Button
+                      icon={() => <Notification />}
+                      style="text"
+                      onClick={handleSub}
+                    />
                   </Tooltip>
                 </div>
               </div>
@@ -42,6 +51,7 @@ function TopBar() {
         />
       </div>
       <FilterPane showPane={showPane} setShowPane={setShowPane} />
+      <Subscribe showSub={showSub} setShowSub={setShowSub} />
     </div>
   );
 }
