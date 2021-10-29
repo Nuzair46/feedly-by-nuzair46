@@ -15,7 +15,7 @@ function CardFooter({ data, category }) {
         },
       }}
     >
-      <Button className="leading-4" label="Read More" style="link" />
+      <Button className="leading-4 mt-4" label="Read More" style="link" />
     </Link>
   );
 }
