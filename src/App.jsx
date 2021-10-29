@@ -14,6 +14,7 @@ import { CATEGORY } from "./components/Common/constants";
 function App() {
   const [NEWS, setNews] = useState({});
   const [loading, setLoading] = useState(true);
+  const [searchNews, setSearchNews] = useState(NEWS);
   const [filter, setFilter] = useState(
     JSON.parse(localStorage.getItem("filter"))
   );
@@ -36,7 +37,6 @@ function App() {
       console.log(error);
     }
   };
-
   if (loading) {
     return (
       <div className="h-screen">
@@ -47,7 +47,13 @@ function App() {
 
   return (
     <BrowserRouter>
-      <TopBar filter={filter} setFilter={setFilter} />
+      <TopBar
+        filter={filter}
+        setFilter={setFilter}
+        searchNews={searchNews}
+        setSearchNews={setSearchNews}
+        news={NEWS}
+      />
       <ToastContainer />
       <Switch>
         <Route
@@ -58,7 +64,8 @@ function App() {
               news={NEWS}
               filter={filter}
               setFilter={setFilter}
-              setNews={setNews}
+              searchNews={searchNews}
+              setSearchNews={setSearchNews}
             />
           )}
         />

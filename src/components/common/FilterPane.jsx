@@ -80,6 +80,7 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
             onClick={() => {
               setShowPane(false);
               setFilter(FILTER);
+              localStorage.setItem("filter", JSON.stringify(FILTER));
               setTempFilter(FILTER);
             }}
           />

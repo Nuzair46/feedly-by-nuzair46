@@ -9,7 +9,7 @@ import EmptyModal from "./EmptyModal";
 import RelatedNews from "./NewsPane/RelatedNews";
 import FilterBadges from "../Common/FilterBadges";
 
-function Dashboard({ news, filter, setFilter }) {
+function Dashboard({ news, filter, setFilter, setSearchNews }) {
   const [filteredNews, setFilteredNews] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -21,6 +21,7 @@ function Dashboard({ news, filter, setFilter }) {
       }
     });
     setFilteredNews(filtered);
+    setSearchNews(filtered);
   }, [filter, news]);
 
   if (filteredNews.length === 0) {
