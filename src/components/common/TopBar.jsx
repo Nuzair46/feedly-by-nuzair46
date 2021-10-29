@@ -7,7 +7,7 @@ import FilterPane from "./FilterPane";
 import Subscribe from "./Subscribe";
 import SearchBar from "./Search";
 
-function TopBar({ filter, setFilter }) {
+function TopBar({ filter, setFilter, news }) {
   const [showPane, setShowPane] = useState(false);
   const [showSub, setShowSub] = useState(false);
   const [showSearch, setShowSearch] = useState(false);
@@ -70,7 +70,12 @@ function TopBar({ filter, setFilter }) {
         setFilter={setFilter}
       />
       <Subscribe showSub={showSub} setShowSub={setShowSub} />
-      <SearchBar showSearch={showSearch} setShowSearch={setShowSearch} />
+      <SearchBar
+        showSearch={showSearch}
+        setShowSearch={setShowSearch}
+        filter={filter}
+        news={news}
+      />
     </div>
   );
 }

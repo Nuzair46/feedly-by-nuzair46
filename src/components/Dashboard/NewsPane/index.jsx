@@ -6,6 +6,7 @@ import { Typography } from "neetoui";
 import RelatedNews from "./RelatedNews";
 
 function NewsPane({ news }) {
+  let mainData = news.data[0];
   return (
     <div className="mx-40 mb-10">
       <Typography
@@ -15,7 +16,7 @@ function NewsPane({ news }) {
       >
         {news.category} News
       </Typography>
-      <MainCard id={0} data={news.data[0]} category={news.category} />
+      <MainCard id={0} data={mainData} category={news.category} />
       <RelatedNews news={news} category={news.category} />
     </div>
   );
