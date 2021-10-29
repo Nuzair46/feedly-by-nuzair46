@@ -9,9 +9,9 @@ import SearchModal from "./SearchModal";
 function SearchBar({ showSearch, setShowSearch, filter, news }) {
   const [searchResultArray, setSearchResultArray] = useState({});
   const [length, setLength] = useState(0);
-  const [filll, setFilll] = useState([]);
+  const [newFilter, setNewFilter] = useState([]);
 
-  let filtered = filll;
+  let filtered = newFilter;
   useEffect(() => {
     filtered = [];
     news.map(item => {
@@ -19,7 +19,7 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
         filtered.push(item);
       }
     });
-    setFilll(filtered);
+    setNewFilter(filtered);
   }, [filter]);
 
   const debounce = func => {
