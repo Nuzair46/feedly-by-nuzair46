@@ -8,7 +8,7 @@ import SearchModal from "./SearchModal";
 
 function SearchBar({ showSearch, setShowSearch, filter, news }) {
   const [searchResultArray, setSearchResultArray] = useState({});
-
+  const [length, setLength] = useState(0);
   let filtered = [];
   useEffect(() => {
     news.map(item => {
@@ -30,6 +30,7 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
   };
 
   const handleSearch = value => {
+    setLength(value.length);
     const search_result = {};
     filtered.map(item => {
       item.data.map(element => {
@@ -43,8 +44,11 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
     });
     setSearchResultArray(search_result);
   };
+
   let Results = () => {
-    return Object.keys(searchResultArray).map((item, index) => {
+    let ref = 9499944; //some random number
+    let result = Object.keys(searchResultArray).map((item, index) => {
+      ref = index;
       return (
         <Button
           key={index}
@@ -58,11 +62,13 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
         />
       );
     });
-  };
 
-  useEffect(() => {
-    //console.log(searchResultArray);
-  }, [searchResultArray]);
+    if (ref === 9499944 && length > 2) {
+      return <div>No results found</div>;
+    }
+
+    return result;
+  };
 
   const optimizedSearch = useCallback(debounce(handleSearch), []);
 
