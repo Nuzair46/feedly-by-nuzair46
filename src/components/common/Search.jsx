@@ -1,12 +1,13 @@
 import React, { useCallback, useEffect, useState } from "react";
 
-import { Modal, Input } from "neetoui";
+import { Input, Button } from "neetoui";
 
 import { Search } from "@bigbinary/neeto-icons";
 
+import SearchModal from "./SearchModal";
+
 function SearchBar({ showSearch, setShowSearch, filter, news }) {
-  const [searchResultArray, setSearchResultArray] = useState([]);
-  //const [filteredNews, setFilteredNews] = useState([]);
+  const [searchResultArray, setSearchResultArray] = useState({});
 
   let filtered = [];
   useEffect(() => {
@@ -15,8 +16,6 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
         filtered.push(item);
       }
     });
-    //setFilteredNews(filtered);
-    console.log(filtered);
   }, [filter]);
 
   const debounce = func => {
@@ -31,19 +30,33 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
   };
 
   const handleSearch = value => {
-    let tempArray = [];
+    const search_result = {};
     filtered.map(item => {
       item.data.map(element => {
         if (
           element.title.toLowerCase().includes(value.toLowerCase()) &&
           value.length > 2
         ) {
-          console.log(item.category);
-          console.log(element.title, value);
-          tempArray.push(element);
-          setSearchResultArray(tempArray);
+          search_result[element.url] = [item.category, element.title];
         }
       });
+    });
+    setSearchResultArray(search_result);
+  };
+  let Results = () => {
+    return Object.keys(searchResultArray).map((item, index) => {
+      return (
+        <Button
+          key={index}
+          style="text"
+          label={`${searchResultArray[item][1]}`}
+          to={`/article/${searchResultArray[item][0]}/${item.replace(
+            "https://www.inshorts.com/en/news/",
+            ""
+          )}`}
+          onClick={() => setShowSearch(false)}
+        />
+      );
     });
   };
 
@@ -54,20 +67,17 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
   const optimizedSearch = useCallback(debounce(handleSearch), []);
 
   return (
-    <div className="w-full">
-      <Modal
-        isOpen={showSearch}
-        onClose={() => {
-          setShowSearch(false);
-        }}
-        closeButton={false}
-      >
+    <div id="searchPortal">
+      <SearchModal showSearch={showSearch} setShowSearch={setShowSearch}>
         <Input
           prefix={<Search size={16} />}
           placeholder="Search"
           onChange={e => optimizedSearch(e.target.value)}
         />
-      </Modal>
+        <div>
+          <Results />
+        </div>
+      </SearchModal>
     </div>
   );
 }
