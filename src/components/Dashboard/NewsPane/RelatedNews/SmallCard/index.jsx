@@ -8,9 +8,7 @@ import CardHeader from "./CardHeader";
 function SmallCard({ data, category }) {
   return (
     <div className="flex">
-      <div className="">
-        <img className="" src={imgURL + "84/84"} />
-      </div>
+      <img className="" src={imgURL + "84/84"} />
       <div className="space-y-3 px-5">
         <CardHeader title={data.title} />
         <CardBody
