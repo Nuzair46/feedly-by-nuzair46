@@ -9,13 +9,17 @@ import SearchModal from "./SearchModal";
 function SearchBar({ showSearch, setShowSearch, filter, news }) {
   const [searchResultArray, setSearchResultArray] = useState({});
   const [length, setLength] = useState(0);
-  let filtered = [];
+  const [filll, setFilll] = useState([]);
+
+  let filtered = filll;
   useEffect(() => {
+    filtered = [];
     news.map(item => {
       if (filter[item.category]) {
         filtered.push(item);
       }
     });
+    setFilll(filtered);
   }, [filter]);
 
   const debounce = func => {
@@ -29,7 +33,7 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
     };
   };
 
-  const handleSearch = value => {
+  const handleSearch = (value, filtered) => {
     setLength(value.length);
     const search_result = {};
     filtered.map(item => {
@@ -49,6 +53,7 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
     let ref = 9499944; //some random number
     let result = Object.keys(searchResultArray).map((item, index) => {
       ref = index;
+
       return (
         <Button
           key={index}
@@ -78,7 +83,9 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
         <Input
           prefix={<Search size={16} />}
           placeholder="Search"
-          onChange={e => optimizedSearch(e.target.value)}
+          onChange={e => {
+            optimizedSearch(e.target.value, filtered);
+          }}
         />
         <div>
           <Results />
