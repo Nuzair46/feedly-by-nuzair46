@@ -9,7 +9,14 @@ import EmptyModal from "./EmptyModal";
 import RelatedNews from "./NewsPane/RelatedNews";
 import FilterBadges from "../common/FilterBadges";
 
-function Dashboard({ news, filter, setFilter, setSearchNews }) {
+function Dashboard({
+  news,
+  filter,
+  setFilter,
+  setSearchNews,
+  archived,
+  setArchived,
+}) {
   const [filteredNews, setFilteredNews] = useState([]);
   const [showModal, setShowModal] = useState(false);
 
@@ -58,10 +65,15 @@ function Dashboard({ news, filter, setFilter, setSearchNews }) {
   return (
     <div>
       <div className="mx-40 my-5">
-        <FilterBadges filter={filter} setFilter={setFilter} />
+        <FilterBadges
+          filter={filter}
+          setFilter={setFilter}
+          archived={archived}
+          setArchived={setArchived}
+        />
       </div>
       {filteredNews.map((item, index) => {
-        return <NewsPane key={index} news={item} />;
+        return <NewsPane key={index} news={item} archived={archived} />;
       })}
     </div>
   );
