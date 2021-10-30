@@ -1,12 +1,30 @@
-import React from "react";
+import React, { useEffect } from "react";
 
 import MainCard from "./MainCard";
 
 import { Typography } from "neetoui";
 import RelatedNews from "./RelatedNews";
 
-function NewsPane({ news }) {
-  let mainData = news.data[0];
+function NewsPane({ news, archived }) {
+  let NEWS = news;
+  const date = new Date().toLocaleString("default", {
+    day: "numeric",
+    year: "numeric",
+    month: "short",
+  });
+
+  useEffect(() => {
+    if (!archived) {
+      news.data.map(item => {
+        if (item.date.startsWith(date)) {
+          NEWS.category = news.category;
+          NEWS.data.push(item);
+        }
+      });
+    }
+  }, [archived]);
+
+  let mainData = NEWS.data[0];
   return (
     <div className="mx-40 mb-10">
       <Typography
@@ -14,10 +32,10 @@ function NewsPane({ news }) {
         textTransform="capitalize"
         className="font-semibold text-gray-800 mb-6"
       >
-        {news.category} News
+        {NEWS.category} News
       </Typography>
-      <MainCard id={0} data={mainData} category={news.category} />
-      <RelatedNews news={news} category={news.category} />
+      <MainCard id={0} data={mainData} category={NEWS.category} />
+      <RelatedNews news={NEWS} category={NEWS.category} />
     </div>
   );
 }

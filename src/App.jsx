@@ -19,6 +19,8 @@ function App() {
     JSON.parse(localStorage.getItem("filter"))
   );
 
+  const [archived, setArchived] = useState(false);
+
   useEffect(() => {
     apiCall();
   }, [filter]);
@@ -53,6 +55,8 @@ function App() {
         searchNews={searchNews}
         setSearchNews={setSearchNews}
         news={NEWS}
+        archived={archived}
+        setArchived={setArchived}
       />
       <ToastContainer />
       <Switch>
@@ -66,6 +70,8 @@ function App() {
               setFilter={setFilter}
               searchNews={searchNews}
               setSearchNews={setSearchNews}
+              archived={archived}
+              setArchived={setArchived}
             />
           )}
         />

@@ -3,7 +3,7 @@ import React from "react";
 import { Typography, Tag } from "neetoui";
 import { FILTER } from "./constants";
 
-function FilterBadges({ filter, setFilter }) {
+function FilterBadges({ filter, setFilter, archived, setArchived }) {
   let tempFilter = {};
   return (
     <div className="space-x-4 flex">
@@ -30,6 +30,12 @@ function FilterBadges({ filter, setFilter }) {
             return null;
           })
         : null}
+      {archived ? (
+        <Tag
+          label={<Typography className="text-xs">Archived</Typography>}
+          onClose={() => setArchived(false)}
+        />
+      ) : null}
     </div>
   );
 }

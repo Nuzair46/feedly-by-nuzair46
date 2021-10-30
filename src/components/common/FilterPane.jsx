@@ -5,8 +5,16 @@ import { CATEGORY, FILTER } from "./constants";
 
 import { Check } from "@bigbinary/neeto-icons";
 
-function FilterPane({ showPane, setShowPane, filter, setFilter }) {
+function FilterPane({
+  showPane,
+  setShowPane,
+  filter,
+  setFilter,
+  archived,
+  setArchived,
+}) {
   const [tempFilter, setTempFilter] = useState(filter);
+  const [tempArchived, setTempArchived] = useState(archived);
   useEffect(() => {
     setTempFilter(filter);
   }, [filter]);
@@ -60,6 +68,8 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
             <Checkbox
               id="archived"
               label="Include archived articles"
+              checked={tempArchived}
+              onChange={() => setTempArchived(!tempArchived)}
               className="my-5"
             />
           </div>
@@ -72,6 +82,7 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
             onClick={() => {
               setShowPane(false);
               setFilter(tempFilter);
+              setArchived(tempArchived);
               handleFilterOnArticle();
             }}
           />
@@ -82,6 +93,8 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
             onClick={() => {
               setShowPane(false);
               setFilter(FILTER);
+              setArchived(archived);
+              setTempArchived(archived);
               localStorage.setItem("filter", JSON.stringify(FILTER));
               setTempFilter(FILTER);
             }}
