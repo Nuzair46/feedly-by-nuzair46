@@ -2,14 +2,14 @@ import React, { useState, useEffect } from "react";
 
 import { Route, Switch, BrowserRouter } from "react-router-dom";
 import { ToastContainer } from "react-toastify";
-import TopBar from "./components/Common/TopBar";
+import TopBar from "./components/common/TopBar";
 import Dashboard from "./components/Dashboard";
 import ArticlePane from "./components/Dashboard/ArticlePane";
-import ErrorBound from "./components/Common/ErrorBound";
+import ErrorBound from "./components/common/ErrorBound";
 
 import { PageLoader } from "neetoui";
 import { API } from "./api/axios";
-import { CATEGORY } from "./components/Common/constants";
+import { CATEGORY } from "./components/common/constants";
 
 function App() {
   const [NEWS, setNews] = useState({});
