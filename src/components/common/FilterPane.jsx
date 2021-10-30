@@ -17,7 +17,8 @@ function FilterPane({
   const [tempArchived, setTempArchived] = useState(archived);
   useEffect(() => {
     setTempFilter(filter);
-  }, [filter]);
+    setTempArchived(archived);
+  }, [filter, archived]);
 
   const handleFilterOnArticle = () => {
     if (window.location.pathname.includes("/article")) {
