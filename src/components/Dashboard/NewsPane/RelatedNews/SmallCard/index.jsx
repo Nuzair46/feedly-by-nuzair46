@@ -1,5 +1,5 @@
 import React from "react";
-import { imgURL } from "../../../../Common/constants";
+import { imgURL } from "../../../../common/constants";
 
 import CardBody from "./CardBody";
 import CardFooter from "./CardFooter";

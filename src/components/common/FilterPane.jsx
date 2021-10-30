@@ -37,23 +37,25 @@ function FilterPane({ showPane, setShowPane, filter, setFilter }) {
           <Typography className="font-semibold text-gray-700">
             Category
           </Typography>
-          {CATEGORY.map((item, index) => {
-            return (
-              <div key={index}>
-                <Checkbox
-                  id={item}
-                  label={item}
-                  checked={tempFilter[item.toLowerCase()]}
-                  onChange={() => {
-                    setTempFilter({
-                      ...tempFilter,
-                      [item.toLowerCase()]: !tempFilter[item.toLowerCase()],
-                    });
-                  }}
-                />
-              </div>
-            );
-          })}
+          <div className="flex flex-col space-y-5">
+            {CATEGORY.map((item, index) => {
+              return (
+                <div key={index}>
+                  <Checkbox
+                    id={item}
+                    label={item}
+                    checked={tempFilter[item.toLowerCase()]}
+                    onChange={() => {
+                      setTempFilter({
+                        ...tempFilter,
+                        [item.toLowerCase()]: !tempFilter[item.toLowerCase()],
+                      });
+                    }}
+                  />
+                </div>
+              );
+            })}
+          </div>
           <div className="flex border-t w-11/12">
             <Checkbox
               id="archived"

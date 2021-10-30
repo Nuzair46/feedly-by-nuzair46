@@ -7,7 +7,7 @@ import { NeetoForm } from "@bigbinary/neeto-icons";
 import { Typography, Button } from "neetoui";
 import EmptyModal from "./EmptyModal";
 import RelatedNews from "./NewsPane/RelatedNews";
-import FilterBadges from "../Common/FilterBadges";
+import FilterBadges from "../common/FilterBadges";
 
 function Dashboard({ news, filter, setFilter, setSearchNews }) {
   const [filteredNews, setFilteredNews] = useState([]);

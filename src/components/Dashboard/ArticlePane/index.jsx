@@ -2,7 +2,7 @@ import React from "react";
 
 import { Typography, Button } from "neetoui";
 import { Copy } from "@bigbinary/neeto-icons";
-import { imgURL, LOREM_IPSUM } from "../../Common/constants";
+import { imgURL, LOREM_IPSUM } from "../../common/constants";
 import RelatedNews from "../NewsPane/RelatedNews";
 
 function ArticlePane({ state, news, category, slug }) {
