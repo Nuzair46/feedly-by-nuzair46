@@ -40,7 +40,7 @@ function SearchBar({ showSearch, setShowSearch, filter, news }) {
       item.data.map(element => {
         if (
           element.title.toLowerCase().includes(value.toLowerCase()) &&
-          value.length > 0
+          value.length > 2
         ) {
           search_result[element.url] = [item.category, element.title];
         }
