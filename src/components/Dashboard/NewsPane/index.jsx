@@ -6,7 +6,7 @@ import { Typography } from "neetoui";
 import RelatedNews from "./RelatedNews";
 
 function NewsPane({ news, archived }) {
-  let NEWS = news;
+  let NEWS = { ...news };
   const date = new Date().toLocaleString("default", {
     day: "numeric",
     year: "numeric",
