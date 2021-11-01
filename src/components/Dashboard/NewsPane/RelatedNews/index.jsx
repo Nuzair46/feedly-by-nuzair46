@@ -2,7 +2,7 @@ import React from "react";
 import SmallCard from "./SmallCard";
 
 function RelatedNews({ news }) {
-  let smallCardData = news.data;
+  let smallCardData = [...news.data];
   smallCardData.shift();
   return (
     <div className="flex space-x-4">
